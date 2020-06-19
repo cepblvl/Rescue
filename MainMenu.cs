@@ -15,28 +15,35 @@ public class MainMenu : MonoBehaviour
     public GameObject AboutMenu;
     public Text Version;
     public Slider LoadProgress;
+
     public void Settings(){
         SettingsMenu.SetActive(true);
     }
+
     public void NewGame(){
         LoadMenu.SetActive(true);
         StartCoroutine(LoadAsync("Game"));
         
     }
+
     public void ContinueGame(){
         LoadMenu.SetActive(true);
         StartCoroutine(LoadAsync("Game"));
     }
+
     public void About(){
         AboutMenu.SetActive(true);
         Version.text="Version : " + Application.version;
     }
+
     public void AboutExit(){
         AboutMenu.SetActive(false);
     }
+
     public void ExitSettings(){
         SettingsMenu.SetActive(false);
     }
+
     IEnumerator LoadAsync(string SceneName)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneName);
@@ -47,6 +54,7 @@ public class MainMenu : MonoBehaviour
             yield return null;
         }
     }
+    
     // Update is called once per frame
     void Update()
     {
