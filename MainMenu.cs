@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
         
     }
     public GameObject SettingsMenu;
+    public GameObject DifficultMenu;
     public GameObject LoadMenu;
     public GameObject AboutMenu;
     public Text Version;
@@ -21,6 +22,10 @@ public class MainMenu : MonoBehaviour
     }
 
     public void NewGame(){
+        DifficultMenu.SetActive(true);  
+    }
+
+    public void ChooseDifficulte(){
         LoadMenu.SetActive(true);
         StartCoroutine(LoadAsync("Game"));
         
