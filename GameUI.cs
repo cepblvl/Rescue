@@ -19,6 +19,7 @@ public class GameUI : MonoBehaviour
     //Time
     public GameObject GameControl;
     private GameContoller GameScript;
+    public bool paused = false;
 
     //UI
     public GameObject GameMenu;
@@ -68,19 +69,32 @@ public class GameUI : MonoBehaviour
     //Time
     public void TimeX1()
     {
+        Time.timeScale = 1;
+        paused=false;
         GameScript.time=1f;
     }
     public void TimeX2()
     {
+        Time.timeScale = 1;
+        paused=false;
         GameScript.time=2f;
     }
     public void TimeX3()
     {
+        Time.timeScale = 1;
+        paused=false;
         GameScript.time=3f;
     }
     public void TimePause()
     {
-        GameScript.time=0f;
+        if(!paused){
+        Time.timeScale = 0;
+        paused=true;
+        }
+        else{
+        Time.timeScale = 1;
+        paused=false;
+        }
     }
 
     //UI
