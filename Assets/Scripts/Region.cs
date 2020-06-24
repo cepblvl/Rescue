@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using System.Collections;
-using System.Collections.Generic;
+
 using System.IO;
-using System.Xml;
-using System;
+
 
 
 public class Region : MonoBehaviour
@@ -113,7 +111,7 @@ public class Region : MonoBehaviour
                 SaveFile(listdR,"dR");
                 SaveFile(listdD,"dD");
             }*/
-            yield return new WaitForSeconds(0.1f/GameScript.time);
+            yield return new WaitForSeconds(1f/GameScript.time);
         }
     }
     // Update is called once per frame
