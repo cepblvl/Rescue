@@ -33,7 +33,14 @@ public class GameContoller : MonoBehaviour,IPointerClickHandler
             HealthyLabel.text=Mathf.FloorToInt(regionScript.S).ToString();
             DeadLabel.text=Mathf.FloorToInt(regionScript.D).ToString();
             RecoverLabel.text=Mathf.FloorToInt(regionScript.R).ToString();
-            SickLabel.text=Mathf.CeilToInt(regionScript.I).ToString();
+            SickLabel.text=Mathf.FloorToInt(regionScript.I).ToString();
+            /*if(Mathf.FloorToInt(regionScript.S)+Mathf.FloorToInt(regionScript.D)+Mathf.FloorToInt(regionScript.R)+Mathf.FloorToInt(regionScript.I)!=10000000){
+                Debug.Log(Mathf.FloorToInt(regionScript.S)+Mathf.FloorToInt(regionScript.D)+Mathf.FloorToInt(regionScript.R)+Mathf.FloorToInt(regionScript.I));
+                Debug.Log(Mathf.FloorToInt(regionScript.S));
+                Debug.Log(Mathf.FloorToInt(regionScript.D));
+                Debug.Log(Mathf.FloorToInt(regionScript.R));
+                Debug.Log(Mathf.FloorToInt(regionScript.I));*/
+            }
         }
         
     }

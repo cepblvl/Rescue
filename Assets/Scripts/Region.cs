@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml;
+using System;
+
+
 public class Region : MonoBehaviour
 {
     public GameObject GameControl;
@@ -20,9 +27,32 @@ public class Region : MonoBehaviour
     public float alpha; //уровень смертности
     public float St;//здоровые в предыдущий день
     public float It;//больные в предыдущий день
-    
-          
+    public float Rt;//здоровые в предыдущий день
+    public float Dt;//умершие в предыдущий день
+    public float dR;//прирост выздоровевших
+    public float dD;//прирост умерших
+    /*public float dI;
+    public int day;
 
+    public List<int> listS = new List<int>();
+    public List<int> listR = new List<int>();
+    public List<int> listD = new List<int>();
+    public List<int> listI = new List<int>();
+    public List<int> listdR = new List<int>();
+    public List<int> listdD = new List<int>();
+    public List<int> listdI = new List<int>();*/
+    /*void SaveFile(List<int> list,string f)
+{
+	StreamWriter sw = new StreamWriter(Application.dataPath + "/" + f + ".txt");
+	string sp = " ";
+
+	for(int i = 0; i < list.Count; i++)
+	{
+		sw.WriteLine(list[i]);
+	}
+	
+	sw.Close();
+}*/
 
 
     // Start is called before the first frame update
@@ -33,6 +63,9 @@ public class Region : MonoBehaviour
         beta=gamma*C;
         alpha=3*gamma/100;
         GameScript = GameControl.GetComponent<GameContoller>();
+        Rt=0;
+        Dt=0;
+        //day=0;
         StartCoroutine("SickPlusPlus");
     }
     IEnumerator SickPlusPlus()
@@ -41,11 +74,46 @@ public class Region : MonoBehaviour
         {   
             St=S;
             It=I;
-            S=S+(-(beta*It*St)/N);
-            I=I+beta*It*St/N-(gamma+alpha)*It;
-            R=R+gamma*It;
-            D=D+alpha*It;
-            yield return new WaitForSeconds(1f/GameScript.time);
+            R=R+gamma*Mathf.Floor(I);
+            D=D+alpha*Mathf.Floor(I);
+            dR=Mathf.Floor(R)-Mathf.Floor(Rt);
+            dD=Mathf.Floor(D)-Mathf.Floor(Dt);
+            if(dR>0){
+                I=I+beta*Mathf.Floor(I)*Mathf.Floor(S)/N-dR;
+                Rt=Mathf.Floor(R);
+            }
+            if(dD>0){
+                I=I+beta*Mathf.Floor(I)*Mathf.Floor(S)/N-dD;
+                Dt=Mathf.Floor(D);
+            }
+            if(dD==0 & dR==0){
+                I=I+beta*Mathf.Floor(I)*Mathf.Floor(S)/N;
+            }
+            S=N-Mathf.Floor(I)-Mathf.Floor(R)-Mathf.Floor(D);
+            
+            //I=I+beta*I*St/N-(gamma+alpha)*I;
+            
+           // dI=beta*I*St/N;
+            //I=I+beta*I*St/N-(gamma+alpha)*I;
+            /*listI.Add(Mathf.FloorToInt(I));
+            listD.Add(Mathf.FloorToInt(D));
+            listR.Add(Mathf.FloorToInt(R));
+            listS.Add(Mathf.FloorToInt(S));
+            listdI.Add(Mathf.FloorToInt(dI));
+            listdD.Add(Mathf.FloorToInt(dD));
+            listdR.Add(Mathf.FloorToInt(dR));
+            
+            day++;
+            if(listI.Count==600){
+                SaveFile(listI,"I");
+                SaveFile(listR,"R");
+                SaveFile(listD,"D");
+                SaveFile(listS,"S");
+                SaveFile(listdI,"dI");
+                SaveFile(listdR,"dR");
+                SaveFile(listdD,"dD");
+            }*/
+            yield return new WaitForSeconds(0.1f/GameScript.time);
         }
     }
     // Update is called once per frame
