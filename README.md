@@ -1,6 +1,6 @@
 git clone https://github.com/cepblvl/Rescue
 
-Unity 2019.4.0f1
+Unity 2019.4.0f1 (With Android SDK/NDK and JDK installed)
 
 To build .apk:
 
