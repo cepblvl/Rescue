@@ -56,10 +56,20 @@ public class Region : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject Settings = GameObject.Find("Settings");
+        Settings SettingsScript=Settings.GetComponent<Settings>();
+        N=SettingsScript.N/5f;
+        I=SettingsScript.I/5f;
+        C=SettingsScript.C;
+        g=SettingsScript.g;
+        float a=SettingsScript.a;
+        D=0f;
+        R=0f;
+
         S=N-I-D-R;
         gamma=1f/g;
         beta=gamma*C;
-        alpha=3*gamma/100;
+        alpha=a*gamma/100;
         GameScript = GameControl.GetComponent<GameContoller>();
         Rt=0;
         Dt=0;
