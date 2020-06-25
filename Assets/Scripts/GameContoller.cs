@@ -23,6 +23,7 @@ public class GameContoller : MonoBehaviour,IPointerClickHandler
     //Region
     private Region regionScript;
     public List<GameObject> Regions;
+    public GameObject blur;
     private List<Region> RegionScripts = new List<Region>();
     private bool reg;
     public void OnPointerClick(PointerEventData eventData){
@@ -32,6 +33,8 @@ public class GameContoller : MonoBehaviour,IPointerClickHandler
         Debug.Log("Click All");
         for (int i=0; i<Regions.Count;i++){
             Regions[i].tag="Region";
+            Regions[i].transform.position = new Vector3(Regions[i].transform.position.x, Regions[i].transform.position.y, 0);
+            blur.transform.position = new Vector3(blur.transform.position.x, blur.transform.position.y, 2);
         }
         reg=false;
         }
@@ -45,6 +48,8 @@ public class GameContoller : MonoBehaviour,IPointerClickHandler
             }
             else{
                 Regions[i].tag="All";
+                Regions[i].transform.position = new Vector3(Regions[i].transform.position.x, Regions[i].transform.position.y, 2);
+                blur.transform.position = new Vector3(blur.transform.position.x, blur.transform.position.y, 1);
             }
         }
         reg=true;
