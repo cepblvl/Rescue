@@ -29,8 +29,10 @@ public class Region : MonoBehaviour
     public float Dt;//умершие в предыдущий день
     public float dR;//прирост выздоровевших
     public float dD;//прирост умерших
-    /*public float dI;
     public int day;
+    public List<bool> decree= new List<bool>();
+    /*public float dI;
+    
 
     public List<int> listS = new List<int>();
     public List<int> listR = new List<int>();
@@ -56,6 +58,9 @@ public class Region : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for (int i=0;i<5;i++){
+            decree.Add(false);
+        }
         GameObject Settings = GameObject.Find("Settings");
         Settings SettingsScript=Settings.GetComponent<Settings>();
         N=SettingsScript.N/5f;
@@ -73,7 +78,7 @@ public class Region : MonoBehaviour
         GameScript = GameControl.GetComponent<GameContoller>();
         Rt=0;
         Dt=0;
-        //day=0;
+        day=0;
         StartCoroutine("SickPlusPlus");
     }
     IEnumerator SickPlusPlus()
@@ -82,6 +87,8 @@ public class Region : MonoBehaviour
         {   
             St=S;
             It=I;
+            
+
             R=R+gamma*Mathf.Floor(I);
             D=D+alpha*Mathf.Floor(I);
             dR=Mathf.Floor(R)-Mathf.Floor(Rt);
@@ -98,7 +105,7 @@ public class Region : MonoBehaviour
                 I=I+beta*Mathf.Floor(I)*Mathf.Floor(S)/N;
             }
             S=N-Mathf.Floor(I)-Mathf.Floor(R)-Mathf.Floor(D);
-            
+            day++;
             //I=I+beta*I*St/N-(gamma+alpha)*I;
             
            // dI=beta*I*St/N;
@@ -111,7 +118,7 @@ public class Region : MonoBehaviour
             listdD.Add(Mathf.FloorToInt(dD));
             listdR.Add(Mathf.FloorToInt(dR));
             
-            day++;
+            
             if(listI.Count==600){
                 SaveFile(listI,"I");
                 SaveFile(listR,"R");
@@ -121,7 +128,7 @@ public class Region : MonoBehaviour
                 SaveFile(listdR,"dR");
                 SaveFile(listdD,"dD");
             }*/
-            yield return new WaitForSeconds(1f/GameScript.time);
+            yield return new WaitForSeconds(2f/GameScript.time);
         }
     }
     // Update is called once per frame

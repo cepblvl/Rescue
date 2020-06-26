@@ -24,7 +24,10 @@ public class GameUI : MonoBehaviour
     //UI
     public GameObject GameMenu;
     public GameObject MenuAction;
-    
+    public GameObject MenuChooseAction;
+    public GameObject Win;
+    public GameObject Lose;
+    public List<Toggle> toggles=new List<Toggle>();
 
     // Start is called before the first frame update
     void Start()
@@ -98,20 +101,46 @@ public class GameUI : MonoBehaviour
     }
 
     //UI
-    public void OpenMenu()
+   public void OpenMenu()
     {
         GameMenu.SetActive(true);
+    } 
+    public void WinMenu()
+    {
+        Win.SetActive(true);
+    }
+    public void LoseMenu()
+    {
+        Lose.SetActive(true);
     }
 
     public void CloseActionMenu()
     {
+        MenuChooseAction.SetActive(false);
         MenuAction.SetActive(false);
+        
     }
-
 
     public void OpenActionMenu()
     {
-        MenuAction.SetActive(true);
+        if(GameScript.Selected!=null){
+            MenuAction.SetActive(true);
+        }
+        
+    }
+    public void CloseChooseActionMenu()
+    {
+        MenuChooseAction.SetActive(false);
+    }
+
+    public void OpenChooseActionMenu()
+    {
+        Region scr=GameScript.Selected.GetComponent<Region>();
+        MenuChooseAction.SetActive(true);
+        
+        for (int i=0;i<5;i++){
+            toggles[i].isOn=scr.decree[i];
+        }
     }
 
     
