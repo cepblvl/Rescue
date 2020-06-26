@@ -2096,7 +2096,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5.5999756, y: 0}
+  m_AnchoredPosition: {x: 5.6000977, y: 0}
   m_SizeDelta: {x: -38.339905, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &419904918
@@ -2453,7 +2453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -19.900024, y: 48}
+  m_AnchoredPosition: {x: -19.899902, y: 48}
   m_SizeDelta: {x: 248.70142, y: 2160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &532355017
@@ -4587,7 +4587,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -19.900024, y: 48}
+  m_AnchoredPosition: {x: -19.899902, y: 48}
   m_SizeDelta: {x: 248.70142, y: 2160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &986828526
@@ -9842,17 +9842,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083031302}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1297278040}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 230}
-  m_SizeDelta: {x: 252.41974, y: 170.79639}
+  m_AnchoredPosition: {x: 0, y: 219.54999}
+  m_SizeDelta: {x: 189.02255, y: 215.3555}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2083031304
 MonoBehaviour:
@@ -9927,7 +9927,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3799512692308688915, guid: 4b4b6a1269299e64e962e59356894d34,
+  m_Sprite: {fileID: 8975302872623177582, guid: 3262fae556324f0479e3ba485f3605a8,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
