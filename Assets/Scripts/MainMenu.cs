@@ -18,7 +18,9 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SettingsScript=SettingsObject.GetComponent<Settings>();
+        GameObject Settings = GameObject.Find("Settings");
+        SettingsScript=Settings.GetComponent<Settings>();
+        //SettingsScript=SettingsObject.GetComponent<Settings>();
     }
    
     public void Settings(){
