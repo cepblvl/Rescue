@@ -11,9 +11,8 @@ public class Settings : MonoBehaviour
     public float C;
     public float g;
     public float a;
-
-
-
+    public float Budget;
+    public float Unrest;
     // Start is called before the first frame update
     void Start()
     {

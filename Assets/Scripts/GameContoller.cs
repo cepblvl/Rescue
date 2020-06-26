@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class GameContoller : MonoBehaviour,IPointerClickHandler
 {
     //UI
-    public Text BudjetLabel;
-    public Text UnrestLabel;
+    public Text BudgetLabel;
+    public Slider UnrestSlider;
     public Text HealthyLabel;
     public Text SickLabel;
     public Text DeadLabel;
@@ -19,6 +19,9 @@ public class GameContoller : MonoBehaviour,IPointerClickHandler
     private int AllDead;
     private int AllRecover;
     private int AllSick;
+    public float Unrest;
+    public float Budget;
+    private float Budget0;
 
     //Region
     private Region regionScript;
@@ -62,12 +65,16 @@ public class GameContoller : MonoBehaviour,IPointerClickHandler
     // Start is called before the first frame update
     void Start()
     {
+        GameObject Settings = GameObject.Find("Settings");
+        Settings SettingsScript=Settings.GetComponent<Settings>();
+        Budget=SettingsScript.Budget;
+        Budget0=Budget;
+        Unrest=SettingsScript.Unrest;
+        StartCoroutine("AddBudget");
         for (int i=0; i<Regions.Count;i++){
             
             RegionScripts.Add(Regions[i].GetComponent<Region>());
-        
         }
-        
         reg=false;
     }
     public void AllSelect(){
@@ -76,14 +83,20 @@ public class GameContoller : MonoBehaviour,IPointerClickHandler
         }
         reg=false;
     }
-    
+    IEnumerator AddBudget()
+    {
+        for (; ; )
+        {   
+            Budget=Budget+Budget0/12;
+            yield return new WaitForSeconds(30f/time);
+        }
+    }
     // Update is called once per frame
     void Update()
     {   
-
+        BudgetLabel.text=Mathf.FloorToInt(Budget).ToString();
+        UnrestSlider.value=Unrest/1000f;
         
-
-
         if(reg){
             HealthyLabel.text=Mathf.FloorToInt(regionScript.S).ToString();
             DeadLabel.text=Mathf.FloorToInt(regionScript.D).ToString();
@@ -120,4 +133,6 @@ public class GameContoller : MonoBehaviour,IPointerClickHandler
         }
         
     }
+
+
 }

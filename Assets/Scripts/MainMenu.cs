@@ -36,7 +36,8 @@ public class MainMenu : MonoBehaviour
         SettingsScript.C=2f;
         SettingsScript.g=6f;
         SettingsScript.a=1f;
-
+        SettingsScript.Budget=1000000;
+        SettingsScript.Unrest=10;
 
         LoadMenu.SetActive(true);
         StartCoroutine(LoadAsync("Game"));
@@ -48,6 +49,8 @@ public class MainMenu : MonoBehaviour
         SettingsScript.C=3f;
         SettingsScript.g=10f;
         SettingsScript.a=2f;
+        SettingsScript.Budget=100000;
+        SettingsScript.Unrest=50;
         LoadMenu.SetActive(true);
         StartCoroutine(LoadAsync("Game"));
         
@@ -58,6 +61,8 @@ public class MainMenu : MonoBehaviour
         SettingsScript.C=4f;
         SettingsScript.g=14f;
         SettingsScript.a=3f;
+        SettingsScript.Budget=10000;
+        SettingsScript.Unrest=100;
         LoadMenu.SetActive(true);
         StartCoroutine(LoadAsync("Game"));
         
